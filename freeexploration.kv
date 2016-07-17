@@ -28,6 +28,8 @@
             bold: True
 
 <ZeroScreen>:
+    start_button: start_button
+    subject_id: subject_id
     name: 'zero_screen'
     Widget:
         LoggedButton:
@@ -38,5 +40,20 @@
             text: 'Start'
             font_size: 36
             size: root.width * 0.3, root.height * 0.2
-            pos: root.width * 0.5 - self.width * 0.5, root.height * 0.7 - self.height * 0.5
+            pos: root.width * 0.80 - self.width * 0.5, root.height * 0.75 - self.height * 0.5
             on_press: app.sm.current='thegame'
+
+        Label:
+            text: "Subject ID:"
+            size: root.width * 0.15, root.height * 0.2
+            pos: root.width * 0.05 - self.width * 0.5, root.height * 0.75 - self.height * 0.5
+
+        LoggedTextInput:
+            id: subject_id
+            name: 'subject_id'
+            text: ''
+            font_size: 36
+            size: root.width * 0.5, root.height * 0.2
+            pos: root.width * 0.35 - self.width * 0.5, root.height * 0.75 - self.height * 0.5
+
+

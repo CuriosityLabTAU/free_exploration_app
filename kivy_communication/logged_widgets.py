@@ -18,6 +18,8 @@ class LoggedSpinner(WidgetLogger, Spinner):
 
 class LoggedTextInput(WidgetLogger, TextInput):
     pass
+# requires:
+#   textinput.bind(text=textinput.on_text_change)
 
 
 class LoggedButton(WidgetLogger, Button):

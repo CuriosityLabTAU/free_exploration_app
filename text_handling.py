@@ -1,6 +1,8 @@
 import json
 from random import choice
 import time
+from kivy.clock import Clock
+
 the_tts = None
 try:
     from plyer import tts
@@ -34,16 +36,20 @@ class TTS:
         return True
 
     @staticmethod
-    def speak(the_text):
+    def speak(the_text, finished=None):
         for txt in the_text:
             if the_tts is 'pyttsx':
                 TTS.engine.say(txt)
             if the_tts is 'plyer':
                 tts.speak(txt)
                 time.sleep(float(len(txt)) * 0.05)
+                if finished:
+                    Clock.schedule_once(finished, 0)
         if the_tts is 'pyttsx':
             TTS.engine.runAndWait()
             time.sleep(1)
+            if finished:
+                finished(0.0)
 
 
 class TextHandler:

@@ -12,13 +12,25 @@
       "text": {
         "1": {
           "text": "the bird's feathers' color is summer blue"
+        },
+        "2": {
+          "text": "the bird flew south for the winter"
+        },
+        "3": {
+          "text": "the blue bird likes to eat worms"
+        },
+        "4": {
+          "text": "the beautiful bird sings melodic tunes"
+        },
+        "5": {
+          "text": "the bird has three eggs in its nest"
         }
       }
     },
     "dragon": {
       "pos": {
         "x": "1.0",
-        "y": "0.2"
+        "y": "0.1"
       },
       "img": {
         "1": "dragon1.png",
@@ -26,14 +38,26 @@
       },
       "text": {
         "1": {
-          "text": "the bird's feathers' color is summer blue"
+          "text": "this dragon likes to ask riddles"
+        },
+        "2": {
+          "text": "the dragon's scales are smooth"
+        },
+        "3": {
+          "text": "the purple dragon has three brothers"
+        },
+        "4": {
+          "text": "the majestic dragon breathes fire"
+        },
+        "5": {
+          "text": "the dragon's scales are smooth"
         }
       }
     },
     "princess": {
       "pos": {
-        "x": "2.0",
-        "y": "0.2"
+        "x": "0.1",
+        "y": "0.3"
       },
       "img": {
         "1": "princess.png",
@@ -41,14 +65,26 @@
       },
       "text": {
         "1": {
-          "text": "the bird's feathers' color is summer blue"
+          "text": "the princess is very happy today"
+        },
+        "2": {
+          "text": "she just celebrated her sixth birthday"
+        },
+        "3": {
+          "text": "the beautiful princess likes to dance"
+        },
+        "4": {
+          "text": "the smart princess loves to solve puzzles"
+        },
+        "5": {
+          "text": "the princess's crown is full of gems"
         }
       }
     },
     "dinosaur": {
       "pos": {
-        "x": "0.8",
-        "y": "0.7"
+        "x": "1.0",
+        "y": "0.3"
       },
       "img": {
         "1": "dino2.png",
@@ -56,14 +92,26 @@
       },
       "text": {
         "1": {
-          "text": "the bird's feathers' color is summer blue"
+          "text": "the dinosaur is not scary at all"
+        },
+        "2": {
+          "text": "the purple dinosaur likes to eat leaves"
+        },
+        "3": {
+          "text": "the huge dinosaur loves to play hide and seek"
+        },
+        "4": {
+          "text": "his friends always find him"
+        },
+        "5": {
+          "text": "the cute dinosaur's hands are tiny"
         }
       }
     },
     "penguin": {
       "pos": {
         "x": "0.5",
-        "y": "0.5"
+        "y": "0.2"
       },
       "img": {
         "1": "penguin3.png",
@@ -71,8 +119,21 @@
       },
       "text": {
         "1": {
-          "text": "the bird's feathers' color is summer blue"
+          "text": "the penguin feels warm in the forest"
+        },
+        "2": {
+          "text": "the penguin's feathers are black and white"
+        },
+        "3": {
+          "text": "the penguin loves to dive into the water"
+        },
+        "4": {
+          "text": "the cuddly penguin likes to eat fish"
+        },
+        "5": {
+          "text": "penguin is happy to meet his friends"
         }
+
       }
     }
   }

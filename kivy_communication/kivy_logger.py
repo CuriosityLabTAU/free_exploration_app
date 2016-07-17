@@ -68,6 +68,10 @@ class KL:
             Logger.info("KL mode:" + str(mode))
         KL.log.set_mode(mode)
 
+    @staticmethod
+    def restart():
+        KL.log.set_mode(KL.log.base_mode)
+
     def __init__(self):
         pass
 
@@ -244,7 +248,7 @@ class WidgetLogger(Widget):
 
     def log_touch(self, action, touch):
         if KL.log is not None:
-            Logger.info("KivyLogger log_touch:" + str(touch.profile))
+            Logger.info("KivyLogger log_touch:" + str(touch.profile) + str(action))
             comment = {}
             if 'angle' in touch.profile:
                 comment['angle'] = touch.a

@@ -1,17 +1,19 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from kivy.app import App
-from curiosity_assessment import *
+from free_exploration import *
 from kivy_communication import *
 from kivy.uix.screenmanager import ScreenManager, Screen
 from text_handling import *
 
 
 class ZeroScreen(Screen):
-    pass
+
+    def on_enter(self, *args):
+        KL.restart()
 
 
-class CuriosityAssessmentApp(App):
+class FreeExplorationApp(App):
 
     def build(self):
         # initialize logger
@@ -21,7 +23,9 @@ class CuriosityAssessmentApp(App):
 
         self.sm = ScreenManager()
 
-        screen = ZeroScreen(name='zero')
+        screen = ZeroScreen()
+        screen.ids['subject_id'].bind(text=screen.ids['subject_id'].on_text_change)
+
         self.sm.add_widget(screen)
 
         screen = GameScreen(name='thegame')
@@ -29,8 +33,8 @@ class CuriosityAssessmentApp(App):
         screen.add_widget(screen.curiosity_game.the_widget)
         self.sm.add_widget(screen)
 
-        self.sm.current = 'zero'
+        self.sm.current = 'zero_screen'
         return self.sm
 
 if __name__ == '__main__':
-    CuriosityAssessmentApp().run()
+    FreeExplorationApp().run()

@@ -38,14 +38,14 @@ class Item(Scatter, WidgetLogger):
         super(Item, self).on_touch_down(touch)
         if self.collide_point(*touch.pos):
             self.force_on_touch_down(touch)
-            self.play()
+            Clock.schedule_once(self.play, 0.5)
 
     def on_touch_up(self, touch):
         super(Item, self).on_touch_up(touch)
         if self.collide_point(*touch.pos):
             self.force_on_touch_up(touch)
 
-    def play(self):
+    def play(self, dt):
         # if still has something to play
         if self.current in self.info:
             if 'audio' in self.info[self.current]:
@@ -53,27 +53,28 @@ class Item(Scatter, WidgetLogger):
                 if not self.cg.is_playing:
                     self.info[self.current]['audio'].play()
             elif 'text' in self.info[self.current]:
-                TTS.engine.connect(topic='finished-utterance', cb=self.on_stop)
                 self.on_play()
-                TTS.speak([self.info[self.current]['text']])
+                TTS.speak([self.info[self.current]['text']], self.on_stop)
 
     def on_play(self):
-        if 'audio' in self.info[self.current]:
-            super(Item, self).on_play_wl(self.info[self.current]['audio'].source)
-        elif 'text' in self.info[self.current]:
-            super(Item, self).on_play_wl(self.info[self.current]['text'])
-        self.cg.is_playing = True
-        self.change_img('2')
+        if self.current in self.info:
+            if 'audio' in self.info[self.current]:
+                super(Item, self).on_play_wl(self.info[self.current]['audio'].source)
+            elif 'text' in self.info[self.current]:
+                super(Item, self).on_play_wl(self.info[self.current]['text'])
+            self.cg.is_playing = True
+            self.change_img('2')
 
-    def on_stop(self):
-        if 'audio' in self.info[self.current]:
-            super(Item, self).on_stop_wl(self.info[self.current]['audio'].source)
-        elif 'text' in self.info[self.current]:
-            super(Item, self).on_stop_wl(self.info[self.current]['text'])
-        self.cg.is_playing = False
-        self.current += 1
-        CuriosityGame.current += 1
-        self.change_img('1')
+    def on_stop(self, dt):
+        if self.current in self.info:
+            if 'audio' in self.info[self.current]:
+                super(Item, self).on_stop_wl(self.info[self.current]['audio'].source)
+            elif 'text' in self.info[self.current]:
+                super(Item, self).on_stop_wl(self.info[self.current]['text'])
+            self.cg.is_playing = False
+            self.current += 1
+            CuriosityGame.current += 1
+            self.change_img('1')
 
     def get_text(self):
         # if still has text
@@ -93,7 +94,11 @@ class GameScreen(Screen):
 
     def on_enter(self, *args):
         self.curiosity_game.load(self.the_app.root.size)
+        Clock.schedule_once(self.end_game, self.curiosity_game.game_duration)
         self.curiosity_game.start()
+
+    def end_game(self, dt):
+        self.the_app.sm.current = 'zero_screen'
 
 
 class CuriosityGame:
@@ -102,7 +107,7 @@ class CuriosityGame:
     the_widget = None
     is_playing = False
     the_end = False
-    game_duration = 60
+    game_duration = 120
 
     def __init__(self):
         self.the_widget = CuriosityWidget()
@@ -153,13 +158,13 @@ class CuriosityGame:
                         self.items[name].question[int(kt)] = t['question']
 
         # set widgets
+        self.the_widget.clear_widgets()
         for key, value in self.items.items():
             self.the_widget.add_widget(value)
 
     def start(self):
         # set the timer of the game
         print('Starting clock...')
-        Clock.schedule_once(self.end_game, self.game_duration)
         for k,v in self.items.items():
             v.current = 1
             v.pos = v.base_pos
@@ -190,11 +195,6 @@ class CuriosityGame:
         else:
             for l in self.the_widget.cg_lbl:
                 l.text = ''
-
-    def end_game(self, dt):
-        self.the_end = True
-        if not self.is_playing:
-            pass
 
 
 class CuriosityWidget(FloatLayout):
