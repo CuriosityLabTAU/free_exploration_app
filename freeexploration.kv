@@ -1,0 +1,42 @@
+#:kivy 1.0
+#:import kivy kivy
+#:import win kivy.core.window
+
+<Item>:
+    # each time a picture is created, the image can delay the loading
+    # as soon as the image is loaded, ensure that the center is changed
+    # to the center of the screen.
+    on_size: self.center = win.Window.center
+    size: image.size
+    size_hint: None, None
+    item_lbl:item_lbl
+
+    Image:
+        id: image
+        source: root.source
+
+        # create initial image to be 400 pixels width
+        size: 400, 400 / self.image_ratio
+
+        Label:
+            id: item_lbl
+            text: ""
+            pos: 150, -50
+            font_size: 40
+            color: (0, 0.71, 1., 1)
+            font_name: "fonts/the_font_bold.ttf"
+            bold: True
+
+<ZeroScreen>:
+    name: 'zero_screen'
+    Widget:
+        LoggedButton:
+            id: start_button
+            name: 'start_button'
+            background_color: 1,0,1,1
+            background_normal: ''
+            text: 'Start'
+            font_size: 36
+            size: root.width * 0.3, root.height * 0.2
+            pos: root.width * 0.5 - self.width * 0.5, root.height * 0.7 - self.height * 0.5
+            on_press: app.sm.current='thegame'

@@ -1,0 +1,79 @@
+{
+  "list": {
+    "bird": {
+      "pos": {
+        "x": "0.1",
+        "y": "0.1"
+      },
+      "img": {
+        "1": "bird1.png",
+        "2": "bird1.png"
+      },
+      "text": {
+        "1": {
+          "text": "the bird's feathers' color is summer blue"
+        }
+      }
+    },
+    "dragon": {
+      "pos": {
+        "x": "1.0",
+        "y": "0.2"
+      },
+      "img": {
+        "1": "dragon1.png",
+        "2": "dragon1.png"
+      },
+      "text": {
+        "1": {
+          "text": "the bird's feathers' color is summer blue"
+        }
+      }
+    },
+    "princess": {
+      "pos": {
+        "x": "2.0",
+        "y": "0.2"
+      },
+      "img": {
+        "1": "princess.png",
+        "2": "princess.png"
+      },
+      "text": {
+        "1": {
+          "text": "the bird's feathers' color is summer blue"
+        }
+      }
+    },
+    "dinosaur": {
+      "pos": {
+        "x": "0.8",
+        "y": "0.7"
+      },
+      "img": {
+        "1": "dino2.png",
+        "2": "dino2.png"
+      },
+      "text": {
+        "1": {
+          "text": "the bird's feathers' color is summer blue"
+        }
+      }
+    },
+    "penguin": {
+      "pos": {
+        "x": "0.5",
+        "y": "0.5"
+      },
+      "img": {
+        "1": "penguin3.png",
+        "2": "penguin3.png"
+      },
+      "text": {
+        "1": {
+          "text": "the bird's feathers' color is summer blue"
+        }
+      }
+    }
+  }
+}
