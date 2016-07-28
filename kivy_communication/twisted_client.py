@@ -17,12 +17,18 @@ class KC:
 
 
 class EchoClient(protocol.Protocol):
+    parents = []
 
     def __init__(self):
         pass
 
     def connectionMade(self):
         self.factory.client.on_connection(self.transport)
+        for p in self.factory.client.parents:
+            try:
+                p.on_connection()
+            except:
+                print('parent ', p, ' has no on_connection')
 
     def dataReceived(self, data):
         self.factory.client.data_received(data)
@@ -45,10 +51,12 @@ class TwistedClient:
     connection = None
     parents = None
     ip = None
+    factory = None
 
     def __init__(self, the_parents=None, the_ip=None):
         TwistedClient.parents = the_parents
         TwistedClient.ip = the_ip
+        TwistedClient.factory = EchoFactory(TwistedClient)
 
     @staticmethod
     def add_parent(the_parent):
@@ -62,7 +70,8 @@ class TwistedClient:
             TwistedClient.ip = the_ip
         if TwistedClient.ip:
             TwistedClient.send_status('connecting to ' + TwistedClient.ip)
-            reactor.connectTCP(TwistedClient.ip, 8000, EchoFactory(TwistedClient))
+
+            reactor.connectTCP(TwistedClient.ip, 8000, TwistedClient.factory)
         else:
             TwistedClient.print_message('missing ip!')
 
