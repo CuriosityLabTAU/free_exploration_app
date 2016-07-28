@@ -108,6 +108,7 @@ class CuriosityGame:
     is_playing = False
     the_end = False
     game_duration = 120
+    filename = 'items.json'
 
     def __init__(self):
         self.the_widget = CuriosityWidget()
@@ -116,7 +117,8 @@ class CuriosityGame:
         # initialize items
         items_path = 'items/'
 
-        items_json = JsonStore(items_path + 'items.json')
+        items_json = JsonStore(items_path + self.filename)
+        self.the_widget.update_background(items_path + items_json.get('background'))
         items_list = items_json.get('list')
 
         for name, value in items_list.items():
@@ -203,13 +205,19 @@ class CuriosityWidget(FloatLayout):
     def __init__(self):
         super(CuriosityWidget, self).__init__()
         with self.canvas.before:
-            self.rect = Rectangle(source='items/tree-scene.png')
+            self.rect = Rectangle(source='')
             self.bind(size=self._update_rect, pos=self._update_rect)
         self.cg_lbl = []
         for k in range(0,3):
             self.cg_lbl.append(Label(font_name='fonts/the_font.ttf', halign='right', text='',
                             pos=(10, 10 + 75 * k), font_size='48sp', size_hint_y=0.1, color=[0,0.1,0.5,1.0]))
             self.add_widget(self.cg_lbl[-1])
+
+    def update_background(self, filename):
+        with self.canvas.before:
+            self.rect = Rectangle(source=filename, size=self.size)
+
+            self.bind(size=self._update_rect, pos=self._update_rect)
 
     def _update_rect(self, instance, value):
         self.rect.pos = instance.pos

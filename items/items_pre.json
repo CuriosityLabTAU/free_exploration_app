@@ -1,0 +1,141 @@
+{
+  "background": "iceberg.png",
+  "list": {
+    "babyseal": {
+      "pos": {
+        "x": "0.1",
+        "y": "0.1"
+      },
+      "img": {
+        "1": "babyseal.png",
+        "2": "babyseal.png"
+      },
+      "text": {
+        "1": {
+          "text": "the baby seal fur is white as snow"
+        },
+        "2": {
+          "text": "the seal likes to dive into the cold water"
+        },
+        "3": {
+          "text": "baby deal is looking for its mother"
+        },
+        "4": {
+          "text": "seal heard its mother and is happy"
+        },
+        "5": {
+          "text": "baby seal goes to take its nap now"
+        }
+      }
+    },
+    "cloud": {
+      "pos": {
+        "x": "0.5",
+        "y": "0.6"
+      },
+      "img": {
+        "1": "cloud.png",
+        "2": "cloud.png"
+      },
+      "text": {
+        "1": {
+          "text": "the gray cloud is roaming about"
+        },
+        "2": {
+          "text": "will rain come out of the cloud?"
+        },
+        "3": {
+          "text": "the cloud is only floating"
+        },
+        "4": {
+          "text": "the cloud can come down"
+        },
+        "5": {
+          "text": "it is winter now in the arctic"
+        }
+      }
+    },
+    "kid4": {
+      "pos": {
+        "x": "0.1",
+        "y": "0.2"
+      },
+      "img": {
+        "1": "kid4.png",
+        "2": "kid4.png"
+      },
+      "text": {
+        "1": {
+          "text": "the kid is waving hello"
+        },
+        "2": {
+          "text": "he is very happy to play wit you"
+        },
+        "3": {
+          "text": "the child's brown hair is moving in the wind"
+        },
+        "4": {
+          "text": "is the kid cold or not out here?"
+        },
+        "5": {
+          "text": "the kid's warm clothes protect him from the cold"
+        }
+      }
+    },
+    "snowman1": {
+      "pos": {
+        "x": "0.9",
+        "y": "0.3"
+      },
+      "img": {
+        "1": "snowman1.png",
+        "2": "snowman1.png"
+      },
+      "text": {
+        "1": {
+          "text": "this place is the snowman's home"
+        },
+        "2": {
+          "text": "the snowman likes the cold very much"
+        },
+        "3": {
+          "text": "the snowman's nose is made of a carrot"
+        },
+        "4": {
+          "text": "the snowman likes to play with penguin"
+        },
+        "5": {
+          "text": "the white snowman is has wants to sleep a little"
+        }
+      }
+    },
+    "penguin": {
+      "pos": {
+        "x": "0.5",
+        "y": "0.2"
+      },
+      "img": {
+        "1": "penguin3.png",
+        "2": "penguin3.png"
+      },
+      "text": {
+        "1": {
+          "text": "the penguin feels warm in the forest"
+        },
+        "2": {
+          "text": "the penguin's feathers are black and white"
+        },
+        "3": {
+          "text": "the penguin loves to dive into the water"
+        },
+        "4": {
+          "text": "the cuddly penguin likes to eat fish"
+        },
+        "5": {
+          "text": "penguin is happy to meet his friends"
+        }
+
+      }
+    }
+  }
+}

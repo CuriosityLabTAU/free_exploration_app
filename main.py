@@ -14,11 +14,11 @@ class ZeroScreen(Screen):
 
 
 class FreeExplorationApp(App):
+    game_screen = None
 
     def build(self):
-        # initialize logger
-        KL.start([DataMode.file, DataMode.communication, DataMode.ros], self.user_data_dir)
-        # KL.start([DataMode.file], "/sdcard/curiosity/")#self.user_data_dir)
+        self.init_communication()
+
         TTS.start()
 
         self.sm = ScreenManager()
@@ -28,13 +28,22 @@ class FreeExplorationApp(App):
 
         self.sm.add_widget(screen)
 
-        screen = GameScreen(name='thegame')
-        screen.start(self)
-        screen.add_widget(screen.curiosity_game.the_widget)
-        self.sm.add_widget(screen)
+        self.game_screen = GameScreen(name='the_game')
+        self.game_screen.start(self)
+        self.game_screen.add_widget(self.game_screen.curiosity_game.the_widget)
+        self.sm.add_widget(self.game_screen)
 
         self.sm.current = 'zero_screen'
         return self.sm
+
+    def init_communication(self):
+        KC.start(the_ip='192.168.1.254')  # 127.0.0.1
+        KL.start(mode=[DataMode.file, DataMode.communication, DataMode.ros], pathname=self.user_data_dir,
+                 the_ip='192.168.1.254')
+
+    def press_start(self, pre_post):
+        self.game_screen.curiosity_game.filename = 'items_' + pre_post + '.json'
+        self.sm.current = 'the_game'
 
 if __name__ == '__main__':
     FreeExplorationApp().run()

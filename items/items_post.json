@@ -1,9 +1,10 @@
 {
+  "background": "tree-scene.png",
   "list": {
     "bird": {
       "pos": {
         "x": "0.1",
-        "y": "0.1"
+        "y": "0.3"
       },
       "img": {
         "1": "bird1.png",
@@ -29,8 +30,8 @@
     },
     "dragon": {
       "pos": {
-        "x": "1.0",
-        "y": "0.1"
+        "x": "0.5",
+        "y": "0.5"
       },
       "img": {
         "1": "dragon1.png",
@@ -56,8 +57,8 @@
     },
     "princess": {
       "pos": {
-        "x": "0.1",
-        "y": "0.3"
+        "x": "0.2",
+        "y": "0.08"
       },
       "img": {
         "1": "princess.png",
@@ -84,7 +85,7 @@
     "dinosaur": {
       "pos": {
         "x": "1.0",
-        "y": "0.3"
+        "y": "0.1"
       },
       "img": {
         "1": "dino2.png",
@@ -108,30 +109,30 @@
         }
       }
     },
-    "penguin": {
+    "rabbit": {
       "pos": {
         "x": "0.5",
-        "y": "0.2"
+        "y": "0.15"
       },
       "img": {
-        "1": "penguin3.png",
-        "2": "penguin3.png"
+        "1": "rabbit.png",
+        "2": "rabbit.png"
       },
       "text": {
         "1": {
-          "text": "the penguin feels warm in the forest"
+          "text": "the rabbit likes to jump in the forest"
         },
         "2": {
-          "text": "the penguin's feathers are black and white"
+          "text": "the rabbit's fur is gray"
         },
         "3": {
-          "text": "the penguin loves to dive into the water"
+          "text": "the rabbit hops up and down"
         },
         "4": {
-          "text": "the cuddly penguin likes to eat fish"
+          "text": "the cute rabbit eats green leaves"
         },
         "5": {
-          "text": "penguin is happy to meet his friends"
+          "text": "rabbit is happy to meet his friends"
         }
 
       }

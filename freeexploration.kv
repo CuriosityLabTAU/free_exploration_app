@@ -28,24 +28,36 @@
             bold: True
 
 <ZeroScreen>:
-    start_button: start_button
+    start_button_pre: start_button_pre
+    start_button_post: start_button_post
     subject_id: subject_id
     name: 'zero_screen'
     Widget:
         LoggedButton:
-            id: start_button
-            name: 'start_button'
+            id: start_button_pre
+            name: 'start_button_pre'
             background_color: 1,0,1,1
             background_normal: ''
-            text: 'Start'
-            font_size: 36
-            size: root.width * 0.3, root.height * 0.2
-            pos: root.width * 0.80 - self.width * 0.5, root.height * 0.75 - self.height * 0.5
-            on_press: app.sm.current='thegame'
+            text: 'Start Pre'
+            font_size: 32
+            size: root.width * 0.15, root.height * 0.15
+            pos: root.width * 0.65 - self.width * 0.5, root.height * 0.75 - self.height * 0.5
+            on_press: app.press_start('pre')
+
+        LoggedButton:
+            id: start_button_post
+            name: 'start_button_post'
+            background_color: 1,0,1,1
+            background_normal: ''
+            text: 'Start Post'
+            font_size: 32
+            size: root.width * 0.175, root.height * 0.15
+            pos: root.width * 0.85 - self.width * 0.5, root.height * 0.75 - self.height * 0.5
+            on_press: app.press_start('post')
 
         Label:
             text: "Subject ID:"
-            size: root.width * 0.15, root.height * 0.2
+            size: root.width * 0.175, root.height * 0.2
             pos: root.width * 0.05 - self.width * 0.5, root.height * 0.75 - self.height * 0.5
 
         LoggedTextInput:
@@ -53,7 +65,7 @@
             name: 'subject_id'
             text: ''
             font_size: 36
-            size: root.width * 0.5, root.height * 0.2
+            size: root.width * 0.4, root.height * 0.2
             pos: root.width * 0.35 - self.width * 0.5, root.height * 0.75 - self.height * 0.5
 
 

@@ -205,7 +205,8 @@ class KivyLogger:
     @staticmethod
     def connect():
         try:
-            KC.client = TwistedClient(the_ip=KL.log.ip)
+            if TwistedClient.ip is None:
+                KC.client = TwistedClient(the_ip=KL.log.ip)
             KC.client.connect_to_server(KC.client.ip)
         except:
             KivyLogger.base_mode.remove(DataMode.communication)
