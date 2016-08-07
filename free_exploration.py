@@ -16,6 +16,8 @@ LANGUAGE = 'English'  # 'Hebrew'
 
 
 class Item(Scatter, WidgetLogger):
+    SOMEONE_MOVED = False
+
     item_lbl = ObjectProperty(None)
     source = StringProperty()
     img = {}
@@ -24,6 +26,7 @@ class Item(Scatter, WidgetLogger):
     cg = None
     base_pos = None
     question = {}
+    i_moved = False
 
     def change_img(self, im = '1'):
         if im in self.img:
@@ -37,6 +40,13 @@ class Item(Scatter, WidgetLogger):
     def on_touch_down(self, touch):
         super(Item, self).on_touch_down(touch)
         if self.collide_point(*touch.pos):
+            if Item.SOMEONE_MOVED:
+                self.i_moved = False
+                self._set_do_translation(False)
+                return
+            Item.SOMEONE_MOVED = True
+            self.i_moved = True
+            self._set_do_translation(True)
             self.force_on_touch_down(touch)
             Clock.schedule_once(self.play, 0.5)
 
@@ -44,6 +54,9 @@ class Item(Scatter, WidgetLogger):
         super(Item, self).on_touch_up(touch)
         if self.collide_point(*touch.pos):
             self.force_on_touch_up(touch)
+        Item.SOMEONE_MOVED = False
+        self.i_moved = False
+        self._set_do_translation(True)
 
     def play(self, dt):
         # if still has something to play
