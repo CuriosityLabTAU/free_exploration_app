@@ -38,21 +38,6 @@
         "2": "dragon1.png"
       },
       "text": {
-        "1": {
-          "text": "this dragon likes to ask riddles"
-        },
-        "2": {
-          "text": "the dragon's scales are smooth"
-        },
-        "3": {
-          "text": "the purple dragon has three brothers"
-        },
-        "4": {
-          "text": "the majestic dragon breathes fire"
-        },
-        "5": {
-          "text": "the dragon's scales are smooth"
-        }
       }
     },
     "princess": {
@@ -65,21 +50,6 @@
         "2": "princess.png"
       },
       "text": {
-        "1": {
-          "text": "the princess is very happy today"
-        },
-        "2": {
-          "text": "she just celebrated her sixth birthday"
-        },
-        "3": {
-          "text": "the beautiful princess likes to dance"
-        },
-        "4": {
-          "text": "the smart princess loves to solve puzzles"
-        },
-        "5": {
-          "text": "the princess's crown is full of gems"
-        }
       }
     },
     "dinosaur": {
@@ -93,19 +63,34 @@
       },
       "text": {
         "1": {
-          "text": "the dinosaur is not scary at all"
+          "text": "The name dinosaur means frighteningly big lizard"
         },
         "2": {
-          "text": "the purple dinosaur likes to eat leaves"
+          "text": "Scientists now think that even large dinosaurs like Tyrannosaurus Rex may have had feathers"
         },
         "3": {
-          "text": "the huge dinosaur loves to play hide and seek"
+          "text": "Dinosaurs ruled the Earth for over 160 million years"
         },
         "4": {
-          "text": "his friends always find him"
+          "text": "The first dinosaur to be formally named was the Megalosaurus"
         },
         "5": {
-          "text": "the cute dinosaur's hands are tiny"
+          "text": "A person who studies dinosaurs is known as a paleontologist."
+        },
+        "6": {
+          "text": "the largest dinosaurs were actually plant eaters."
+        },
+        "7": {
+          "text": "Birds descended from a type of dinosaurs known as theropods."
+        },
+        "8": {
+          "text": "Stegosaurus had spikes on its tail."
+        },
+        "9": {
+          "text": "Triceratops’s head had three horns"
+        },
+        "10": {
+          "text": "Pterodactyls are not dinosaurs, they were flying reptiles"
         }
       }
     },
@@ -120,21 +105,35 @@
       },
       "text": {
         "1": {
-          "text": "the rabbit likes to jump in the forest"
+          "text": "the rabbit's name is carrot."
         },
         "2": {
-          "text": "the rabbit's fur is gray"
+          "text": "that's because it loves to eat carrots"
         },
         "3": {
-          "text": "the rabbit hops up and down"
+          "text": "one day carrot went to the forest to meet its friends"
         },
         "4": {
-          "text": "the cute rabbit eats green leaves"
+          "text": "it suddenly saw a beautiful yellow flower"
         },
         "5": {
-          "text": "rabbit is happy to meet his friends"
+          "text": "carrot was hungry so it ate the flower"
+        },
+        "6": {
+          "text": "the yellow flower was not that tasty"
+        },
+        "7": {
+          "text": "carrot was sad, so it went home"
+        },
+        "8": {
+          "text": "near its home was a garden of carrots"
+        },
+        "9": {
+          "text": "the rabbit ate two carrots that day"
+        },
+        "10": {
+          "text": "it went to sleep and dreamt of yellow carrots"
         }
-
       }
     }
   }

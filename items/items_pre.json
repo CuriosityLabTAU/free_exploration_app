@@ -12,19 +12,37 @@
       },
       "text": {
         "1": {
-          "text": "the baby seal fur is white as snow"
+          "text": "the baby seal's fur is white as snow."
         },
         "2": {
-          "text": "the seal likes to dive into the cold water"
+          "text": "that's why its name is snow."
         },
         "3": {
-          "text": "baby deal is looking for its mother"
+          "text": "snow loves to dive into the cold water."
         },
         "4": {
-          "text": "seal heard its mother and is happy"
+          "text": "one day it dove alone to play."
         },
         "5": {
-          "text": "baby seal goes to take its nap now"
+          "text": "when it came out, its mother was gone."
+        },
+      "6": {
+          "text": "snow was very sad, but it was determined to find her."
+        },
+      "7": {
+          "text": "the baby seal looked everything."
+        },
+      "8": {
+          "text": "it looked on the icebergs, in the water."
+        },
+      "9": {
+          "text": "at last, snow found its mother."
+        },
+      "10": {
+          "text": "she was looking for her baby, too."
+        },
+      "11": {
+          "text": "snow and its mother hugged and kissed."
         }
       }
     },
@@ -38,21 +56,6 @@
         "2": "cloud.png"
       },
       "text": {
-        "1": {
-          "text": "the gray cloud is roaming about"
-        },
-        "2": {
-          "text": "will rain come out of the cloud?"
-        },
-        "3": {
-          "text": "the cloud is only floating"
-        },
-        "4": {
-          "text": "the cloud can come down"
-        },
-        "5": {
-          "text": "it is winter now in the arctic"
-        }
       }
     },
     "kid4": {
@@ -69,13 +72,13 @@
           "text": "the kid is waving hello"
         },
         "2": {
-          "text": "he is very happy to play wit you"
+          "text": "he is very happy to play with you"
         },
         "3": {
           "text": "the child's brown hair is moving in the wind"
         },
         "4": {
-          "text": "is the kid cold or not out here?"
+          "text": "the kid is not cold at all here"
         },
         "5": {
           "text": "the kid's warm clothes protect him from the cold"
@@ -92,21 +95,6 @@
         "2": "snowman1.png"
       },
       "text": {
-        "1": {
-          "text": "this place is the snowman's home"
-        },
-        "2": {
-          "text": "the snowman likes the cold very much"
-        },
-        "3": {
-          "text": "the snowman's nose is made of a carrot"
-        },
-        "4": {
-          "text": "the snowman likes to play with penguin"
-        },
-        "5": {
-          "text": "the white snowman is has wants to sleep a little"
-        }
       }
     },
     "penguin": {
@@ -120,19 +108,34 @@
       },
       "text": {
         "1": {
-          "text": "the penguin feels warm in the forest"
+          "text": "Penguins are flightless birds"
         },
         "2": {
-          "text": "the penguin's feathers are black and white"
+          "text": "penguins have adapted flippers to help them swim in the water."
         },
         "3": {
-          "text": "the penguin loves to dive into the water"
+          "text": "Most penguins live in the Southern Hemisphere."
         },
         "4": {
-          "text": "the cuddly penguin likes to eat fish"
+          "text": "No penguins live at the North Pole."
         },
         "5": {
-          "text": "penguin is happy to meet his friends"
+          "text": "Penguins can drink sea water."
+        },
+        "6": {
+          "text": "Penguins spend around half their time in water and the other half on land."
+        },
+        "7": {
+          "text": "Emperor Penguins can stay underwater for around 20 minutes at a time."
+        },
+        "8": {
+          "text": "Crested penguins have yellow crests, as well as red bills and eyes."
+        },
+        "9": {
+          "text": "Little Blue Penguins are the smallest type of penguin."
+        },
+        "10": {
+          "text": "Penguins in Antarctica have no land based predators."
         }
 
       }
