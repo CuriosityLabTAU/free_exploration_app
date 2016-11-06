@@ -12,6 +12,7 @@ from kivy_communication import *
 from hebrew_management import HebrewManagement
 from text_handling import *
 from kivy.uix.screenmanager import Screen
+from audio_recorder import *
 LANGUAGE = 'English'  # 'Hebrew'
 
 
@@ -100,6 +101,7 @@ class Item(Scatter, WidgetLogger):
 class GameScreen(Screen):
     the_app = None
     curiosity_game = None
+    rec = None
 
     def start(self, the_app):
         self.the_app = the_app
@@ -107,12 +109,35 @@ class GameScreen(Screen):
 
     def on_enter(self, *args):
         self.curiosity_game.load(self.the_app.root.size)
-        Clock.schedule_once(self.end_game, self.curiosity_game.game_duration)
-        self.curiosity_game.start()
+        #Clock.schedule_once(self.end_game, self.curiosity_game.game_duration)
+        #self.curiosity_game.start()
+        self.question_asking()
 
     def end_game(self, dt):
         self.the_app.sm.current = 'zero_screen'
 
+    def question_asking(self):
+        self.curiosity_game.the_widget.clear_widgets()
+        for name, item in self.curiosity_game.items.items():
+            if name == self.curiosity_game.asking:
+                # put a single character in the middle
+                item.base_pos = (int(float(0.5) * self.curiosity_game.the_size[1]),
+                                 int(float(0.5) * self.curiosity_game.the_size[0]))
+                self.curiosity_game.the_widget.add_widget(item)
+                self.ask_and_record()
+
+    def ask_and_record(self):
+        # the character prompts the child to ask questions
+        TTS.speak(the_text="It was fun playing with you. Do you have any question? About me, my friends, Tega?")
+        # record the audio from the tablet
+        self.rec = Recorder(self.the_app.user_data_dir + '_question.wav')
+        self.rec.start()
+        Clock.schedule_once(self.finish_recording, 60)
+
+    def finish_recording(self):
+        self.rec.stop()
+        # transmit recording
+        KL.log.insert(action=LogAction.audio, obj=self.rec.sData, comment='audio recording')
 
 class CuriosityGame:
     items = {}
@@ -122,16 +147,20 @@ class CuriosityGame:
     the_end = False
     game_duration = 120
     filename = 'items.json'
+    asking = None
+    the_size = []
 
     def __init__(self):
         self.the_widget = CuriosityWidget()
 
     def load(self, size=[100,100]):
+        self.the_size = size
         # initialize items
         items_path = 'items/'
 
         items_json = JsonStore(items_path + self.filename)
         self.the_widget.update_background(items_path + items_json.get('background'))
+        self.asking = items_json.get('asking')
         items_list = items_json.get('list')
 
         for name, value in items_list.items():
@@ -146,7 +175,8 @@ class CuriosityGame:
                     self.items[name].item_lbl.text = value['label']
 
             if 'pos' in value:
-                self.items[name].base_pos = (int(float(value['pos']['x']) * size[1]), int(float(value['pos']['y']) * size[0]))
+                self.items[name].base_pos = (int(float(value['pos']['x']) * self.the_size[1]),
+                                             int(float(value['pos']['y']) * self.the_size[0]))
 
             self.items[name].img = {}
             if 'img' in value:
