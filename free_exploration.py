@@ -1,18 +1,21 @@
 #!/usr/bin/kivy
 # -*- coding: utf-8 -*-
-from kivy.uix.scatter import Scatter
-from kivy.properties import StringProperty, ObjectProperty
-from kivy.core.audio import SoundLoader
-from kivy.uix.floatlayout import FloatLayout
 from functools import partial
+from kivy.core.audio import SoundLoader
 from kivy.graphics import Rectangle
+from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.label import Label
-from kivy.clock import Clock
-from kivy_communication import *
-from hebrew_management import HebrewManagement
-from text_handling import *
+from kivy.uix.scatter import Scatter
 from kivy.uix.screenmanager import Screen
-from audio_recorder import *
+
+from kivy.properties import StringProperty, ObjectProperty
+
+from hebrew_management import HebrewManagement
+from kivy_communication import *
+from kivy_communication.audio_recorder import *
+from text_handling import *
+
+
 LANGUAGE = 'English'  # 'Hebrew'
 
 
@@ -111,12 +114,13 @@ class GameScreen(Screen):
         self.curiosity_game.load(self.the_app.root.size)
         #Clock.schedule_once(self.end_game, self.curiosity_game.game_duration)
         #self.curiosity_game.start()
-        self.question_asking()
+        self.question_asking(0.5)
 
-    def end_game(self, dt):
+    def end_game(self):
+        print('end game')
         self.the_app.sm.current = 'zero_screen'
 
-    def question_asking(self):
+    def question_asking(self, dt):
         self.curiosity_game.the_widget.clear_widgets()
         for name, item in self.curiosity_game.items.items():
             if name == self.curiosity_game.asking:
@@ -124,27 +128,31 @@ class GameScreen(Screen):
                 item.base_pos = (int(float(0.5) * self.curiosity_game.the_size[1]),
                                  int(float(0.5) * self.curiosity_game.the_size[0]))
                 self.curiosity_game.the_widget.add_widget(item)
-                self.ask_and_record()
+                Clock.schedule_once(self.ask_and_record, 0.1)
 
-    def ask_and_record(self):
+    def ask_and_record(self, dt):
         # the character prompts the child to ask questions
-        TTS.speak(the_text="It was fun playing with you. Do you have any question? About me, my friends, Tega?")
-        # record the audio from the tablet
-        self.rec = Recorder(self.the_app.user_data_dir + '_question.wav')
-        self.rec.start()
-        Clock.schedule_once(self.finish_recording, 60)
+        print("ask_and_record")
+        TTS.speak(the_text=["                                ",
+                            "It was fun playing with you     ",
+                            "Do you have any question?       ",
+                            "About me, my friends, Tega?     "], finished=self.record)
 
-    def finish_recording(self):
-        self.rec.stop()
-        # transmit recording
-        KL.log.insert(action=LogAction.audio, obj=self.rec.sData, comment='audio recording')
+    def record(self, dt=0):
+        print('recording ...')
+        AR.start(file_name='_question', record_time=10, finished=self.end_recording)
+
+    def end_recording(self):
+        TTS.speak(the_text=['Great            ',
+                            'Till next time   ',
+                            'Bye              '], finished=self.end_game())
+
 
 class CuriosityGame:
     items = {}
     current = 0
     the_widget = None
     is_playing = False
-    the_end = False
     game_duration = 120
     filename = 'items.json'
     asking = None
@@ -213,7 +221,6 @@ class CuriosityGame:
         for k,v in self.items.items():
             v.current = 1
             v.pos = v.base_pos
-        self.the_end = False
         self.is_playing = False
 
 
@@ -226,8 +233,6 @@ class CuriosityGame:
     def on_stop(self, name, par):
         self.items[name].on_stop()
         self.show_text("")
-        if self.the_end:
-            self.end_game(0.5)
 
     def show_text(self, text):
         if len(text) > 0:

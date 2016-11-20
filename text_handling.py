@@ -21,6 +21,7 @@ except:
 class TTS:
     engine = None
     what = ''
+    current_text = None
 
     @staticmethod
     def start():
@@ -37,19 +38,30 @@ class TTS:
 
     @staticmethod
     def speak(the_text, finished=None):
-        for txt in the_text:
-            if the_tts is 'pyttsx':
-                TTS.engine.say(txt)
-            if the_tts is 'plyer':
-                tts.speak(txt)
-                time.sleep(float(len(txt)) * 0.05)
-                if finished:
-                    Clock.schedule_once(finished, 0)
         if the_tts is 'pyttsx':
+            for txt in the_text:
+                TTS.engine.say(txt)
             TTS.engine.runAndWait()
             time.sleep(1)
             if finished:
                 finished(0.0)
+
+        elif the_tts is 'plyer':
+            if the_text:
+                print('the_text', the_text)
+                TTS.current_text = the_text[0]
+                Clock.schedule_once(TTS.speak_tts,
+                                    float(len(TTS.current_text)) * 0.05)
+                the_text.remove(TTS.current_text)
+                TTS.speak(the_text, finished=finished)
+            elif finished:
+                Clock.schedule_once(finished, 0.05)
+
+    @staticmethod
+    def speak_tts(dt):
+        print('speaking ... ', TTS.current_text)
+        tts.speak(TTS.current_text)
+
 
 
 class TextHandler:
