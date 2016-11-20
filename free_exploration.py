@@ -82,7 +82,7 @@ class Item(Scatter, WidgetLogger):
             self.cg.is_playing = True
             self.change_img('2')
 
-    def on_stop(self, dt):
+    def on_stop(self, dt=0):
         if self.current in self.info:
             if 'audio' in self.info[self.current]:
                 super(Item, self).on_stop_wl(self.info[self.current]['audio'].source)
@@ -112,9 +112,9 @@ class GameScreen(Screen):
 
     def on_enter(self, *args):
         self.curiosity_game.load(self.the_app.root.size)
-        #Clock.schedule_once(self.end_game, self.curiosity_game.game_duration)
-        #self.curiosity_game.start()
-        self.question_asking(0.5)
+        Clock.schedule_once(self.question_asking, self.curiosity_game.game_duration)
+        self.curiosity_game.start()
+        # self.question_asking(0.5)
 
     def end_game(self):
         print('end game')
@@ -133,19 +133,14 @@ class GameScreen(Screen):
     def ask_and_record(self, dt):
         # the character prompts the child to ask questions
         print("ask_and_record")
-        TTS.speak(the_text=["                                ",
-                            "It was fun playing with you     ",
-                            "Do you have any question?       ",
-                            "About me, my friends, Tega?     "], finished=self.record)
+        TTS.speak(the_text=["It was fun playing with you. Do you have any question? About me, my friends, Tega?"], finished=self.record)
 
     def record(self, dt=0):
         print('recording ...')
         AR.start(file_name='_question', record_time=10, finished=self.end_recording)
 
     def end_recording(self):
-        TTS.speak(the_text=['Great            ',
-                            'Till next time   ',
-                            'Bye              '], finished=self.end_game())
+        TTS.speak(the_text=['Great. Till next time. Bye Bye.'], finished=self.end_game())
 
 
 class CuriosityGame:

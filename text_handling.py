@@ -22,6 +22,7 @@ class TTS:
     engine = None
     what = ''
     current_text = None
+    current_finished = None
 
     @staticmethod
     def start():
@@ -47,20 +48,22 @@ class TTS:
                 finished(0.0)
 
         elif the_tts is 'plyer':
-            if the_text:
-                print('the_text', the_text)
-                TTS.current_text = the_text[0]
-                Clock.schedule_once(TTS.speak_tts,
-                                    float(len(TTS.current_text)) * 0.05)
-                the_text.remove(TTS.current_text)
-                TTS.speak(the_text, finished=finished)
-            elif finished:
-                Clock.schedule_once(finished, 0.05)
+            TTS.current_text = the_text
+            TTS.current_finished = finished
+            TTS.speak_tts(0)
 
     @staticmethod
     def speak_tts(dt):
-        print('speaking ... ', TTS.current_text)
-        tts.speak(TTS.current_text)
+        if TTS.current_text:
+            txt = TTS.current_text[0]
+            print('speaking ... ', txt)
+            tts.speak(txt)
+            TTS.current_text.remove(txt)
+            Clock.schedule_once(TTS.speak_tts,
+                                float(len(txt)) * 0.075)
+        elif TTS.current_finished:
+            TTS.current_finished(0.0)
+
 
 
 
