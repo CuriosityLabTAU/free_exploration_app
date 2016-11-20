@@ -2,6 +2,30 @@ from kivy.clock import Clock
 from jnius import autoclass
 from audiostream import get_input
 import wave
+from kivy_communication.kivy_logger import *
+
+
+class AR:
+    rec = None
+    filename = None
+    finished = None
+
+    @staticmethod
+    def start(file_name, record_time=10, finished=None):
+        AR.filename = file_name
+        AR.finished = finished
+        t0 = datetime.now()
+        full_filename = KL.log.pathname + '/' + t0.strftime('%Y_%m_%d_%H_%M_%S_%f') + AR.filename + '.wav'
+        AR.rec = Recorder(full_filename)
+        AR.rec.start()
+        Clock.schedule_once(AR.finish_recording, record_time)
+
+
+    @staticmethod
+    def finish_recording(self):
+        AR.rec.stop()
+        KL.log.insert(action=LogAction.audio, obj=str(AR.rec.sData), comment='audio recording')
+        AR.finished()
 
 
 class Recorder(object):
@@ -20,13 +44,12 @@ class Recorder(object):
         self.ChannelConfig = self.AudioFormat.CHANNEL_IN_MONO
         self.AudioEncoding = self.AudioFormat.ENCODING_PCM_16BIT
         self.BufferSize = self.AudioRecord.getMinBufferSize(self.SampleRate, self.ChannelConfig, self.AudioEncoding)
-        self.outstream = self.FileOutputStream(self.filename)
         self.sData = []
         self.mic = get_input(callback=self.mic_callback, source='mic', buffersize=self.BufferSize)
 
     def mic_callback(self, buf):
         self.sData.append(buf)
-        print ('got : ' + str(len(buf)))
+        # print ('got : ' + str(len(buf)))
 
     def start(self, recordtime=1):
         self.mic.start()
