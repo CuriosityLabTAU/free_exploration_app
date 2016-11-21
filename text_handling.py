@@ -59,9 +59,11 @@ class TTS:
             print('speaking ... ', txt)
             tts.speak(txt)
             TTS.current_text.remove(txt)
+            print('remaining ...', TTS.current_text)
             Clock.schedule_once(TTS.speak_tts,
                                 float(len(txt)) * 0.075)
         elif TTS.current_finished:
+            print('finished')
             TTS.current_finished(0.0)
 
 
