@@ -52,7 +52,7 @@ class Item(Scatter, WidgetLogger):
             self.i_moved = True
             self._set_do_translation(True)
             self.force_on_touch_down(touch)
-            Clock.schedule_once(self.play, 0.5)
+            Clock.schedule_once(self.play, 0.1)
 
     def on_touch_up(self, touch):
         super(Item, self).on_touch_up(touch)
@@ -89,8 +89,8 @@ class Item(Scatter, WidgetLogger):
             elif 'text' in self.info[self.current]:
                 super(Item, self).on_stop_wl(self.info[self.current]['text'])
             self.cg.is_playing = False
-            self.current += 1
             CuriosityGame.current += 1
+            self.current += 1
             self.change_img('1')
 
     def get_text(self):
@@ -125,8 +125,8 @@ class GameScreen(Screen):
         for name, item in self.curiosity_game.items.items():
             if name == self.curiosity_game.asking:
                 # put a single character in the middle
-                item.pos = (int(float(0.5) * self.curiosity_game.the_size[1]),
-                                 int(float(0.5) * self.curiosity_game.the_size[0]))
+                item.pos = (int(float(0.4) * self.curiosity_game.the_size[1]),
+                                 int(float(0.1) * self.curiosity_game.the_size[0]))
                 self.curiosity_game.the_widget.add_widget(item)
                 Clock.schedule_once(self.ask_and_record, 0.1)
 
@@ -137,10 +137,10 @@ class GameScreen(Screen):
 
     def record(self, dt=0):
         print('recording ...')
-        AR.start(file_name='_question', record_time=60, finished=self.end_recording)
+        AR.start(file_name='_question', record_time=30, finished=self.end_recording)
 
     def end_recording(self):
-        TTS.speak(the_text=['Great. Till next time. Bye Bye.'], finished=self.end_game())
+        TTS.speak(the_text=['Great. Till next time. Bye Bye.', '    '], finished=self.end_game())
 
 
 class CuriosityGame:
