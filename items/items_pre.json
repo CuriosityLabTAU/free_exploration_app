@@ -58,7 +58,7 @@
           "text": "snow was very sad, but it was determined to find her."
         },
       "7": {
-          "text": "the baby seal looked everything."
+          "text": "the baby seal looked everywhere."
         },
       "8": {
           "text": "it looked on the icebergs, in the water."
@@ -77,7 +77,7 @@
     "cloud": {
       "pos": {
         "x": "0.5",
-        "y": "0.6"
+        "y": "0.2"
       },
       "img": {
         "1": "cloud.png",
