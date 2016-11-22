@@ -125,7 +125,7 @@ class GameScreen(Screen):
         for name, item in self.curiosity_game.items.items():
             if name == self.curiosity_game.asking:
                 # put a single character in the middle
-                item.base_pos = (int(float(0.5) * self.curiosity_game.the_size[1]),
+                item.pos = (int(float(0.5) * self.curiosity_game.the_size[1]),
                                  int(float(0.5) * self.curiosity_game.the_size[0]))
                 self.curiosity_game.the_widget.add_widget(item)
                 Clock.schedule_once(self.ask_and_record, 0.1)
@@ -137,7 +137,7 @@ class GameScreen(Screen):
 
     def record(self, dt=0):
         print('recording ...')
-        AR.start(file_name='_question', record_time=10, finished=self.end_recording)
+        AR.start(file_name='_question', record_time=60, finished=self.end_recording)
 
     def end_recording(self):
         TTS.speak(the_text=['Great. Till next time. Bye Bye.'], finished=self.end_game())
@@ -159,6 +159,7 @@ class CuriosityGame:
     def load(self, size=[100,100]):
         self.the_size = size
         # initialize items
+        self.items = {}
         items_path = 'items/'
 
         items_json = JsonStore(items_path + self.filename)
