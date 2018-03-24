@@ -29,8 +29,8 @@ class AR:
 
     @staticmethod
     def finish_recording(self):
-        AR.rec.stop()
         KL.log.insert(action=LogAction.audio, obj='', comment='audio recording stop')
+        AR.rec.stop()
         AR.finished()
 
 

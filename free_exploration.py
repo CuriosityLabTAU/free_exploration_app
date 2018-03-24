@@ -149,7 +149,7 @@ class CuriosityGame:
     current = 0
     the_widget = None
     is_playing = False
-    game_duration = 10
+    game_duration = 120
     filename = 'items.json'
     asking = None
     the_size = []
