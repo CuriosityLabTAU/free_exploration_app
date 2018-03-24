@@ -1,9 +1,11 @@
 from kivy.clock import Clock
-from jnius import autoclass
-from audiostream import get_input
+from os.path import join
 import wave
 from kivy_communication.kivy_logger import *
-
+try:
+    from jnius import autoclass
+except:
+    pass
 
 class AR:
     rec = None
@@ -15,8 +17,12 @@ class AR:
         AR.filename = file_name
         AR.finished = finished
         t0 = datetime.now()
-        full_filename = KL.log.pathname + '/' + t0.strftime('%Y_%m_%d_%H_%M_%S_%f') + AR.filename + '.wav'
+        # full_filename = KL.log.pathname + '/' + t0.strftime('%Y_%m_%d_%H_%M_%S_%f') + AR.filename + '.wav'
+        full_filename = join(KL.log.pathname,
+                             KL.log.file_prefix + t0.strftime('%Y-%m-%d-%H-%M-%S-%f') + AR.filename + '.wav')
+        print "audio fn: ", full_filename
         AR.rec = Recorder(full_filename)
+        KL.log.insert(action=LogAction.audio, obj=full_filename, comment='audio recording start')
         AR.rec.start()
         Clock.schedule_once(AR.finish_recording, record_time)
 
@@ -24,46 +30,30 @@ class AR:
     @staticmethod
     def finish_recording(self):
         AR.rec.stop()
-        KL.log.insert(action=LogAction.audio, obj=str(AR.rec.sData), comment='audio recording')
+        KL.log.insert(action=LogAction.audio, obj='', comment='audio recording stop')
         AR.finished()
 
 
 class Recorder(object):
-    filename = None
-    samples_per_second = 60
 
     def __init__(self, filename):
-        self.filename = filename
-        # get the needed Java classes
-        self.MediaRecorder = autoclass('android.media.MediaRecorder')
-        self.AudioSource = autoclass('android.media.MediaRecorder$AudioSource')
-        self.AudioFormat = autoclass('android.media.AudioFormat')
-        self.AudioRecord = autoclass('android.media.AudioRecord')
-        # define our system
-        self.SampleRate = 44100
-        self.ChannelConfig = self.AudioFormat.CHANNEL_IN_MONO
-        self.AudioEncoding = self.AudioFormat.ENCODING_PCM_16BIT
-        self.BufferSize = self.AudioRecord.getMinBufferSize(self.SampleRate, self.ChannelConfig, self.AudioEncoding)
-        self.sData = []
-        self.mic = get_input(callback=self.mic_callback, source='mic', buffersize=self.BufferSize)
+        MediaRecorder = autoclass('android.media.MediaRecorder')
+        AudioSource = autoclass('android.media.MediaRecorder$AudioSource')
+        OutputFormat = autoclass('android.media.MediaRecorder$OutputFormat')
+        AudioEncoder = autoclass('android.media.MediaRecorder$AudioEncoder')
 
-    def mic_callback(self, buf):
-        self.sData.append(buf)
-        # print ('got : ' + str(len(buf)))
+        # create out recorder
+        self.mRecorder = MediaRecorder()
+        self.mRecorder.setAudioSource(AudioSource.MIC)
+        self.mRecorder.setOutputFormat(OutputFormat.THREE_GPP)
+        self.mRecorder.setOutputFile(filename)
+        self.mRecorder.setAudioEncoder(AudioEncoder.AMR_NB)
+        self.mRecorder.prepare()
 
-    def start(self, recordtime=1):
-        self.mic.start()
-        Clock.schedule_interval(self.readbuffer, 1/self.samples_per_second)
-
-    def readbuffer(self, dt):
-        self.mic.poll()
+    def start(self):
+        self.mRecorder.start()
 
     def stop(self):
-        Clock.unschedule(self.readbuffer)
-        self.mic.stop()
-        wf = wave.open(self.filename, 'wb')
-        wf.setnchannels(self.mic.channels)
-        wf.setsampwidth(2)
-        wf.setframerate(self.mic.rate)
-        wf.writeframes(b''.join(self.sData))
-        wf.close()
+        self.mRecorder.stop()
+        self.mRecorder.release()
+

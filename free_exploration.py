@@ -133,7 +133,8 @@ class GameScreen(Screen):
     def ask_and_record(self, dt):
         # the character prompts the child to ask questions
         print("ask_and_record")
-        TTS.speak(the_text=["It was fun playing with you. Do you have any question? About me, my friends, Tega?"], finished=self.record)
+        TTS.speak(the_text=["It was fun playing with you. Do you have any questions? About me or my friends?"],
+                  finished=self.record)
 
     def record(self, dt=0):
         print('recording ...')
@@ -148,7 +149,7 @@ class CuriosityGame:
     current = 0
     the_widget = None
     is_playing = False
-    game_duration = 120
+    game_duration = 10
     filename = 'items.json'
     asking = None
     the_size = []
