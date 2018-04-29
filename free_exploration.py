@@ -128,7 +128,7 @@ class GameScreen(Screen):
                 item.pos = (int(float(0.4) * self.curiosity_game.the_size[1]),
                                  int(float(0.1) * self.curiosity_game.the_size[0]))
                 self.curiosity_game.the_widget.add_widget(item)
-                Clock.schedule_once(self.ask_and_record, 0.1)
+                Clock.schedule_once(self.ask_and_record, 1.0)
 
     def ask_and_record(self, dt):
         # the character prompts the child to ask questions
