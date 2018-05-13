@@ -29,6 +29,9 @@ except ImportError:
             ))
         return wrapper
 
+
+session_types = ['pre', 'post', 'after', 'delay']
+
 class SetupScreenRoom(Screen):
     ip = ''
 
@@ -88,13 +91,13 @@ class FreeExplorationApp(App):
         self.subject_id = subject_id
         self.subject_initial = subject_initial
 
-        session = "pre" if pre_post_flag == 1 else "post"
+        self.session = session_types[pre_post_flag - 1]
 
         if self.subject_id == "" or self.subject_initial == "":
             return
 
         KL.start(mode=[DataMode.file, DataMode.communication, DataMode.ros], pathname=self.user_data_dir,
-                 file_prefix=session + "_" + self.subject_id + "_" + self.subject_initial + "_", the_ip=self.local_ip)
+                 file_prefix=self.session + "_" + self.subject_id + "_" + self.subject_initial + "_", the_ip=self.local_ip)
 
         KL.log.insert(action=LogAction.data, obj='FreeExplorationApp', comment='start')
 
@@ -102,13 +105,11 @@ class FreeExplorationApp(App):
             id_f.write(self.subject_id+";"+self.subject_initial)
             id_f.close()
 
-
-
         self.game_screen = GameScreen(name='the_game')
         self.game_screen.start(self)
         self.game_screen.add_widget(self.game_screen.curiosity_game.the_widget)
         self.sm.add_widget(self.game_screen)
-        self.game_screen.curiosity_game.filename = 'items_' + session + '.json'
+        self.game_screen.curiosity_game.filename = 'items_' + self.session + '.json'
         self.sm.current = 'the_game'
         self.android_set_hide_menu()
         return
