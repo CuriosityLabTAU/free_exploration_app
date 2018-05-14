@@ -1,0 +1,141 @@
+{
+  "background": "forest.png",
+  "asking": "kid1",
+  "list": {
+    "butterfly": {
+      "pos": {
+        "x": "0.1",
+        "y": "0.3"
+      },
+      "img": {
+        "1": "butterfly.png",
+        "2": "butterfly.png"
+      },
+      "text": {
+        "1": {
+          "text": "the butterfly's wings are colorful"
+        },
+        "2": {
+          "text": "the butterfly flew from flower to flower"
+        },
+        "3": {
+          "text": "the small butterfly likes to eat leaves"
+        },
+        "4": {
+          "text": "the beautiful butterfly flutters its wings"
+        },
+        "5": {
+          "text": "the butterfly flies to the sky"
+        }
+      }
+    },
+    "pine": {
+      "pos": {
+        "x": "0.5",
+        "y": "0.4"
+      },
+      "img": {
+        "1": "pine.png",
+        "2": "pine.png"
+      },
+      "text": {
+      }
+    },
+    "kid1": {
+      "pos": {
+        "x": "0.2",
+        "y": "0.08"
+      },
+      "img": {
+        "1": "kid1.png",
+        "2": "kid1.png"
+      },
+      "text": {
+      }
+    },
+    "squirrel": {
+      "pos": {
+        "x": "1.0",
+        "y": "0.1"
+      },
+      "img": {
+        "1": "squirrel.png",
+        "2": "squirrel.png"
+      },
+      "text": {
+        "1": {
+          "text": "The name squirrel means shadow tail in ancient greek"
+        },
+        "2": {
+          "text": "Tree squirrels can go down a tree head first"
+        },
+        "3": {
+          "text": "Squirrels live almost everywhere on earth"
+        },
+        "4": {
+          "text": "Squirrels can get as old as twenty years"
+        },
+        "5": {
+          "text": "Squirrels eat mostly nuts and seeds"
+        },
+        "6": {
+          "text": "There are three hundreds species of squirrels"
+        },
+        "7": {
+          "text": "Flying squirrels can glide from tree to tree"
+        },
+        "8": {
+          "text": "Chipmunks are a type fo squirrels"
+        },
+        "9": {
+          "text": "Young squirrels are born naked and blind"
+        },
+        "10": {
+          "text": "Flying squirrels can fly a hundred meters"
+        }
+      }
+    },
+    "turtle": {
+      "pos": {
+        "x": "0.5",
+        "y": "0.15"
+      },
+      "img": {
+        "1": "turtle.png",
+        "2": "turtle.png"
+      },
+      "text": {
+        "1": {
+          "text": "the turtle's name is Shelly"
+        },
+        "2": {
+          "text": "that's because of its large shell house"
+        },
+        "3": {
+          "text": "one day Shelly wanted to learn to run"
+        },
+        "4": {
+          "text": "it started exercising every day"
+        },
+        "5": {
+          "text": "suddenly it saw a pine tree"
+        },
+        "6": {
+          "text": "the pine tree moved even slower than Shelly"
+        },
+        "7": {
+          "text": "so Shelly raced the tree and won"
+        },
+        "8": {
+          "text": "Shelly was very happy to win a race"
+        },
+        "9": {
+          "text": "it went inside its home to celebrate"
+        },
+        "10": {
+          "text": "then it went to sleep and dreamt of lettuce"
+        }
+      }
+    }
+  }
+}

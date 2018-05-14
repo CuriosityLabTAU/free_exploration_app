@@ -1,0 +1,141 @@
+{
+  "background": "castle.png",
+  "asking": "prince",
+  "list": {
+    "dog": {
+      "pos": {
+        "x": "0.1",
+        "y": "0.3"
+      },
+      "img": {
+        "1": "dog.png",
+        "2": "dog.png"
+      },
+      "text": {
+        "1": {
+          "text": "the dog's fur is brown"
+        },
+        "2": {
+          "text": "the dog barks at night"
+        },
+        "3": {
+          "text": "the brown dog likes to eat bones"
+        },
+        "4": {
+          "text": "the playful dogs waggles its tail"
+        },
+        "5": {
+          "text": "the dog guards the castle"
+        }
+      }
+    },
+    "house": {
+      "pos": {
+        "x": "0.5",
+        "y": "0.4"
+      },
+      "img": {
+        "1": "house2.png",
+        "2": "house2.png"
+      },
+      "text": {
+      }
+    },
+    "prince": {
+      "pos": {
+        "x": "0.2",
+        "y": "0.08"
+      },
+      "img": {
+        "1": "prince.png",
+        "2": "prince.png"
+      },
+      "text": {
+      }
+    },
+    "alligator": {
+      "pos": {
+        "x": "1.0",
+        "y": "0.1"
+      },
+      "img": {
+        "1": "alligator.png",
+        "2": "alligator.png"
+      },
+      "text": {
+        "1": {
+          "text": "The name alligator means the lizard in spanish"
+        },
+        "2": {
+          "text": "The oldest alligator is more than eighty years old"
+        },
+        "3": {
+          "text": "Young alligators like to eat snails"
+        },
+        "4": {
+          "text": "Alligators can be as long as a man is tall"
+        },
+        "5": {
+          "text": "Alligators can make a bellowing sound"
+        },
+        "6": {
+          "text": "Aliigators can smell and hear very well"
+        },
+        "7": {
+          "text": "The alligator tail is flat and full of muscles"
+        },
+        "8": {
+          "text": "Alligators have more than 80 teeth in their mouth"
+        },
+        "9": {
+          "text": "Alligators have very good night vision"
+        },
+        "10": {
+          "text": "Some alligators are as white as snow"
+        }
+      }
+    },
+    "cat": {
+      "pos": {
+        "x": "0.5",
+        "y": "0.15"
+      },
+      "img": {
+        "1": "cat.png",
+        "2": "cat.png"
+      },
+      "text": {
+        "1": {
+          "text": "the cat's name is Tiger"
+        },
+        "2": {
+          "text": "that's because it loves to pounce"
+        },
+        "3": {
+          "text": "one day Tiger got lost in the castle"
+        },
+        "4": {
+          "text": "it wondered around for hours"
+        },
+        "5": {
+          "text": "Tiger discovered many new rooms"
+        },
+        "6": {
+          "text": "one had a huge ball of yarn"
+        },
+        "7": {
+          "text": "Tiger played there until night came"
+        },
+        "8": {
+          "text": "it fell asleep dreaming of mice"
+        },
+        "9": {
+          "text": "in the morning Tiger found its way back home"
+        },
+        "10": {
+          "text": "where it played some more with his dog friend"
+        }
+      }
+    }
+  }
+}
