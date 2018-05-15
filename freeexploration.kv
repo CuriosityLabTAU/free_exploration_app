@@ -79,7 +79,7 @@
             font_size: 16 * root.width/800
             size: root.width * 0.175, root.height * 0.1
             pos: root.width * 0.5 - self.width * 1.5, root.height * 0.5 - self.height * 0.5
-            on_press: app.press_start(1, subject_id.text, subject_initial.text)
+            on_press: app.start_assessment(1, subject_id.text, subject_initial.text)
 
         LoggedButton:
             id: start_button_post
@@ -90,7 +90,7 @@
             font_size: 16 * root.width/800
             size: root.width * 0.175, root.height * 0.1
             pos: root.width * 0.5 + self.width * 0.5, root.height * 0.5 - self.height * 0.5
-            on_press: app.press_start(2, subject_id.text, subject_initial.text)
+            on_press: app.start_assessment(2, subject_id.text, subject_initial.text)
 
         LoggedButton:
             id: start_button_after

@@ -87,7 +87,7 @@ class FreeExplorationApp(App):
         print ip_addr
         self.init_communication(ip_addr)
 
-    def press_start(self, pre_post_flag, subject_id, subject_initial):
+    def start_assessment(self, pre_post_flag, subject_id, subject_initial):
         self.subject_id = subject_id
         self.subject_initial = subject_initial
 

@@ -32,7 +32,7 @@
     "pine": {
       "pos": {
         "x": "0.5",
-        "y": "0.4"
+        "y": "0.3"
       },
       "img": {
         "1": "pine.png",
@@ -67,10 +67,10 @@
           "text": "The name squirrel means shadow tail in ancient greek"
         },
         "2": {
-          "text": "Tree squirrels can go down a tree head first"
+          "text": "Tree squirrels can go down a tree, head first"
         },
         "3": {
-          "text": "Squirrels live almost everywhere on earth"
+          "text": "Squirrels leave almost everywhere on earth"
         },
         "4": {
           "text": "Squirrels can get as old as twenty years"

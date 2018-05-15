@@ -80,6 +80,7 @@ class Item(Scatter, WidgetLogger):
             elif 'text' in self.info[self.current]:
                 super(Item, self).on_play_wl(self.info[self.current]['text'])
             self.cg.is_playing = True
+            self.current += 1
             self.change_img('2')
 
     def on_stop(self, dt=0):
@@ -90,7 +91,6 @@ class Item(Scatter, WidgetLogger):
                 super(Item, self).on_stop_wl(self.info[self.current]['text'])
             self.cg.is_playing = False
             CuriosityGame.current += 1
-            self.current += 1
             self.change_img('1')
 
     def get_text(self):
@@ -129,6 +129,7 @@ class GameScreen(Screen):
                                  int(float(0.1) * self.curiosity_game.the_size[0]))
                 self.curiosity_game.the_widget.add_widget(item)
                 Clock.schedule_once(self.ask_and_record, 1.0)
+                break
 
     def ask_and_record(self, dt):
         # the character prompts the child to ask questions
