@@ -114,6 +114,16 @@
             pos: root.width * 0.5 + self.width * 0.5, root.height * 0.5 - root.height * 0.25
             on_press: app.start_assessment(4, subject_id.text, subject_initial.text)
 
+        LoggedButton:
+            id: start_button_file
+            name: 'start_button_file'
+            background_color: 1,0,1,1
+            background_normal: ''
+            text: 'Start From File'
+            font_size: 16 * root.width/800
+            size: root.width * 0.175, root.height * 0.1
+            pos: root.width * 0.5 + self.width * 1.75, root.height * 0.5 - root.height * 0.15
+            on_press: app.start_assessment(5, subject_id.text, subject_initial.text)
 
         Label:
             text: "Subject ID:"

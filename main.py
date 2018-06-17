@@ -30,7 +30,7 @@ except ImportError:
         return wrapper
 
 
-session_types = ['pre', 'post', 'after', 'delay']
+session_types = ['pre', 'post', 'after', 'delay', 'file']
 
 class SetupScreenRoom(Screen):
     ip = ''
@@ -109,7 +109,13 @@ class FreeExplorationApp(App):
         self.game_screen.start(self)
         self.game_screen.add_widget(self.game_screen.curiosity_game.the_widget)
         self.sm.add_widget(self.game_screen)
-        self.game_screen.curiosity_game.filename = 'items_' + self.session + '.json'
+
+        if self.session == 'file':
+            self.game_screen.curiosity_game.filename = dirname(self.user_data_dir) + '/freeexploration/'
+        else:
+            self.game_screen.curiosity_game.filename = 'items/'
+
+        self.game_screen.curiosity_game.filename += 'items_' + self.session + '.json'
         self.sm.current = 'the_game'
         self.android_set_hide_menu()
         return

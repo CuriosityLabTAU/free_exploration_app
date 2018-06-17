@@ -164,7 +164,7 @@ class CuriosityGame:
         self.items = {}
         items_path = 'items/'
 
-        items_json = JsonStore(items_path + self.filename)
+        items_json = JsonStore(self.filename)
         self.the_widget.update_background(items_path + items_json.get('background'))
         self.asking = items_json.get('asking')
         items_list = items_json.get('list')
