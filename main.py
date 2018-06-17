@@ -111,7 +111,7 @@ class FreeExplorationApp(App):
         self.sm.add_widget(self.game_screen)
 
         if self.session == 'file':
-            self.game_screen.curiosity_game.filename = dirname(self.user_data_dir) + '/freeexploration/'
+            self.game_screen.curiosity_game.filename = dirname(self.user_data_dir) + '/free_exp/'
         else:
             self.game_screen.curiosity_game.filename = 'items/'
 
